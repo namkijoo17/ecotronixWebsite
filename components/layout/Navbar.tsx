@@ -95,8 +95,6 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    React.useEffect(() => { setIsOpen(false); }, [pathname]);
-
     const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         const hashIndex = href.indexOf('#');
         const hasHash = hashIndex >= 0;
@@ -136,8 +134,8 @@ export function Navbar() {
             <header className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-white/98 backdrop-blur-xl border-b border-gray-200 shadow-sm"
-                    : "bg-white/90 backdrop-blur-md border-b border-gray-100"
+                    ? "bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)]"
+                    : "bg-white/70 backdrop-blur-md border-b border-white/60"
             )}>
                 <div className="w-full max-w-[1920px] mx-auto px-6 md:px-16 h-18 flex items-center justify-between">
 
@@ -146,7 +144,7 @@ export function Navbar() {
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-1">
+                    <nav className="hidden md:flex items-center gap-1 rounded-full border border-slate-200/80 bg-white/70 px-2 py-1.5">
                         {navLinks.map((link) => {
                             const subItems = subMenuMap[link.name];
                             return (
@@ -154,7 +152,7 @@ export function Navbar() {
                                     <Link
                                         href={link.href}
                                         onClick={(e) => handleScrollToSection(e, link.href)}
-                                        className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors rounded-lg hover:bg-gray-50"
+                                        className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors rounded-full hover:bg-slate-100/80"
                                     >
                                         {link.name}
                                         {subItems && <ChevronDown className="w-3.5 h-3.5 opacity-50 group-hover/nav-item:opacity-100 transition-opacity" />}
@@ -168,7 +166,7 @@ export function Navbar() {
                     {/* Right */}
                     <div className="hidden md:flex items-center gap-3">
                         <div className="relative group/lang">
-                            <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
+                            <button className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-full border border-transparent hover:border-slate-200 hover:bg-white/70 transition-colors cursor-pointer">
                                 <span>{localeLabels[locale] ?? locale.toUpperCase()}</span>
                                 <ChevronDown className="w-3.5 h-3.5 opacity-60" />
                             </button>
@@ -184,15 +182,15 @@ export function Navbar() {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-px h-5 bg-gray-200" />
+                        <div className="w-px h-5 bg-slate-200" />
                         <button onClick={() => setIsModalOpen(true)}
-                            className="flex items-center gap-2 bg-[#0057FF] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-[#0046CC] transition-colors shadow-sm shadow-blue-500/20 cursor-pointer">
+                            className="flex items-center gap-2 bg-[#0057FF] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#0046CC] transition-all duration-300 hover:-translate-y-0.5 shadow-sm shadow-blue-500/20 cursor-pointer">
                             문의하기
                             <ArrowUpRight className="w-4 h-4" />
                         </button>
                     </div>
 
-                    <button className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+                    <button className="md:hidden p-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
                         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
@@ -209,7 +207,7 @@ export function Navbar() {
                                     return (
                                         <div key={link.name}>
                                             <div className="flex items-center justify-between">
-                                                <Link href={link.href} onClick={(e) => handleScrollToSection(e, link.href)}
+                                                <Link href={link.href} onClick={(e) => { setIsOpen(false); handleScrollToSection(e, link.href); }}
                                                     className="flex-1 px-3 py-3.5 text-sm font-medium text-gray-800 hover:text-[#0057FF] transition-colors">
                                                     {link.name}
                                                 </Link>

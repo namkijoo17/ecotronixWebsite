@@ -1,6 +1,5 @@
 import React from 'react';
 import { SecondaryNav } from '@/components/about/SecondaryNav';
-import { AboutHero } from '@/components/about/AboutHero';
 import { CEOMessage } from '@/components/about/CEOMessage';
 import { CompanyHistory } from '@/components/about/CompanyHistory';
 import { Timeline } from '@/components/about/Timeline';
@@ -11,9 +10,9 @@ import { MapSection } from '@/components/about/MapSection';
 
 export default function About() {
     return (
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col bg-transparent">
             <SecondaryNav />
-            <div className="h-11" />
+            <div className="h-16" />
             {/* <AboutHero /> */}
             <CEOMessage />
             <CompanyHistory />

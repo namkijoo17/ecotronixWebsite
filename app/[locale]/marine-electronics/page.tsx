@@ -8,9 +8,9 @@ import { OtherServicesSection } from '@/components/marine-electronics/OtherServi
 
 export default function MarineElectronicsPage() {
     return (
-        <div className="w-full flex flex-col bg-white">
+        <div className="w-full flex flex-col bg-transparent">
             <SubNavigation />
-            <div className="h-11" />
+            <div className="h-16" />
             <HeroSection />
             <GoalSection />
             <ProductsSection />
