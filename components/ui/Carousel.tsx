@@ -83,7 +83,7 @@ export const Carousel: React.FC<CarouselProps> = ({
     return (
         <div className="w-full">
             {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6">
                 <div>
                     {subtitle && (
                         <div className="flex items-center gap-3 mb-4">
@@ -95,7 +95,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="flex items-center gap-4 mt-8 md:mt-0">
+                <div className="flex items-center gap-4 mt-5 md:mt-0">
                     <button
                         onClick={() => scroll('left')}
                         disabled={currentIndex === 0}
@@ -123,7 +123,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             <div
                 ref={sliderRef}
                 onScroll={handleScroll}
-                className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8"
+                className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4"
                 style={{ gap: `${gap}px`, scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
                 {items.map((child, index) => (
@@ -135,7 +135,7 @@ export const Carousel: React.FC<CarouselProps> = ({
 
             {/* Pagination Dots */}
             {maxIndex > 0 && (
-                <div className="flex items-center justify-center gap-3 mt-4">
+                <div className="flex items-center justify-center gap-3 mt-2">
                     {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
                         <button
                             key={idx}

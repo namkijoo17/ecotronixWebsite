@@ -77,7 +77,7 @@ export function ResearchAndDevSection() {
   }, []);
 
   return (
-    <section className="w-full py-20 md:py-28" id="rnd">
+    <section className="w-full pt-7 md:pt-10 pb-14 md:pb-20" id="rnd">
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
         <div className="section-shell p-6 md:p-10 lg:p-12">
 

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { ArrowUpRight, Layers } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Carousel } from '../ui/Carousel';
 
 const newsItems = [
@@ -51,11 +51,8 @@ export function NewsAnnouncement() {
             onPageChange={handlePageChange}
             title={
               <div className="flex flex-col mb-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-4 h-[2px] bg-[#0057FF]" />
-                  <span className="text-xs font-semibold tracking-[0.15em] text-[#0057FF] uppercase">News / Announcements</span>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">뉴스/공지</h3>
+                <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold tracking-[0.12em] text-[#2d5bcb] uppercase mb-3">News / Announcements</span>
+                <h3 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight">뉴스/공지</h3>
               </div>
             }
             items={newsItems.map((news, index) => (
@@ -64,16 +61,16 @@ export function NewsAnnouncement() {
                 href={news.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-xl p-6 border border-gray-100 hover:border-[#0057FF]/20 hover:shadow-md transition-all flex flex-col justify-between min-h-[220px] h-full group block"
+                className="bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all flex flex-col justify-between min-h-[220px] h-full group block"
               >
-                <h3 className="text-gray-800 text-base font-medium leading-relaxed line-clamp-3 mb-6">
+                <h3 className="text-slate-900 text-base font-medium leading-relaxed line-clamp-3 mb-6">
                   {news.title}
                 </h3>
                 <div className="flex items-center justify-between mt-auto">
-                  <span className="text-sm text-gray-500 font-medium">
+                  <span className="text-sm text-slate-500 font-medium">
                     {news.date}
                   </span>
-                  <div className="flex items-center gap-1 text-[#0057FF] font-medium text-sm group-hover:gap-2 transition-all">
+                  <div className="flex items-center gap-1 text-[#2d5bcb] font-medium text-sm group-hover:gap-2 transition-all">
                     더보기
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>

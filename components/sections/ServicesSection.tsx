@@ -25,7 +25,7 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="business" className="w-full py-20 md:py-28">
+    <section id="business" className="w-full pt-14 md:pt-18 pb-7 md:pb-10">
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
         <div className="section-shell p-6 md:p-10 lg:p-12">
 

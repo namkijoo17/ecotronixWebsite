@@ -45,15 +45,12 @@ export function ResourceDownloadSection() {
           {/* Header Row */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-6">
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-4 h-[2px] bg-[#0057FF]" />
-                <span className="text-xs font-semibold tracking-[0.15em] text-[#0057FF] uppercase">Resource Download</span>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-tight">자료 다운로드</h3>
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold tracking-[0.12em] text-[#2d5bcb] uppercase mb-3">Resource Download</span>
+              <h3 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight">자료 다운로드</h3>
             </div>
 
             {/* Search Bar */}
-            <div className="w-full md:w-80 flex items-center bg-white border border-gray-200 rounded-lg overflow-hidden focus-within:border-[#0057FF] focus-within:ring-1 focus-within:ring-[#0057FF] transition-all">
+            <div className="w-full md:w-80 flex items-center bg-white border border-slate-200 rounded-xl overflow-hidden focus-within:border-[#2d5bcb] focus-within:ring-1 focus-within:ring-[#2d5bcb] transition-all">
               <input
                 type="text"
                 placeholder="검색어를 입력하세요"
@@ -62,31 +59,31 @@ export function ResourceDownloadSection() {
                   setSearchQuery(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="flex-1 h-10 px-4 bg-transparent text-sm text-gray-700 placeholder-gray-400 outline-none"
+                className="flex-1 h-10 px-4 bg-transparent text-sm text-slate-700 placeholder-slate-400 outline-none"
               />
-              <button className="h-10 w-10 flex items-center justify-center text-gray-400 hover:text-[#0057FF] transition-colors shrink-0 cursor-pointer">
+              <button className="h-10 w-10 flex items-center justify-center text-slate-400 hover:text-[#2d5bcb] transition-colors shrink-0 cursor-pointer">
                 <Search className="w-4 h-4" />
               </button>
             </div>
           </div>
 
           {/* List */}
-          <div className="flex flex-col gap-2 mb-10 min-h-[300px]">
+          <div className="flex flex-col gap-2 mb-8">
             {filteredResources.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-16 text-gray-400 bg-white rounded-xl border border-gray-100">
-                <FileX className="w-10 h-10 mb-3 text-gray-300" />
-                <p className="text-sm font-medium text-gray-600 mb-1">검색 결과가 없습니다</p>
-                <p className="text-sm text-gray-500">다른 검색어를 입력해 보세요.</p>
+              <div className="flex flex-col items-center justify-center py-16 text-slate-400 bg-white rounded-xl border border-slate-200">
+                <FileX className="w-10 h-10 mb-3 text-slate-400" />
+                <p className="text-sm font-medium text-slate-700 mb-1">검색 결과가 없습니다</p>
+                <p className="text-sm text-slate-500">다른 검색어를 입력해 보세요.</p>
               </div>
             ) : (
               currentItems.map((item) => (
-                <div key={item.id} className="bg-white border border-gray-100 rounded-xl px-6 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:border-[#0057FF]/20 hover:shadow-sm transition-all">
+                <div key={item.id} className="bg-white border border-slate-200 rounded-xl px-6 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:border-blue-300 hover:shadow-sm transition-all">
                   <div>
-                    <h3 className="text-base font-medium text-gray-800 mb-1 leading-snug">{item.title}</h3>
-                    <p className="text-sm text-gray-500">{item.date}</p>
+                    <h3 className="text-base font-medium text-slate-900 mb-1 leading-snug">{item.title}</h3>
+                    <p className="text-sm text-slate-500">{item.date}</p>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
-                    <button className="flex items-center gap-1.5 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:border-[#0057FF] hover:text-[#0057FF] transition-colors cursor-pointer">
+                    <button className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:border-[#2d5bcb] hover:text-[#2d5bcb] transition-colors cursor-pointer">
                       <Download className="w-3.5 h-3.5" />
                       다운로드
                     </button>
@@ -102,7 +99,7 @@ export function ResourceDownloadSection() {
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className={`w-10 h-10 flex items-center justify-center transition-colors ${currentPage === 1 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-500 hover:text-gray-900 cursor-pointer'
+                className={`w-10 h-10 flex items-center justify-center transition-colors ${currentPage === 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-500 hover:text-slate-900 cursor-pointer'
                   }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -112,9 +109,9 @@ export function ResourceDownloadSection() {
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`w-10 h-10 flex items-center justify-center rounded transition-colors font-medium cursor-pointer ${currentPage === page
-                    ? 'bg-[#0057FF] text-white shadow-sm'
-                    : 'text-gray-600 hover:bg-gray-100'
+                  className={`w-10 h-10 flex items-center justify-center rounded-xl transition-colors font-medium cursor-pointer ${currentPage === page
+                    ? 'bg-[#2d5bcb] text-white shadow-sm'
+                    : 'text-slate-500 hover:bg-slate-100'
                     }`}
                 >
                   {page}
@@ -124,7 +121,7 @@ export function ResourceDownloadSection() {
               <button
                 onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className={`w-10 h-10 flex items-center justify-center transition-colors ${currentPage === totalPages ? 'text-gray-300 cursor-not-allowed' : 'text-gray-500 hover:text-gray-900 cursor-pointer'
+                className={`w-10 h-10 flex items-center justify-center transition-colors ${currentPage === totalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-500 hover:text-slate-900 cursor-pointer'
                   }`}
               >
                 <ChevronRight className="w-5 h-5" />

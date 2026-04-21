@@ -16,18 +16,15 @@ export function ContactUsSection() {
             alt="City Buildings"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#0A1628]/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030711]/92 via-[#0b1731]/82 to-[#071327]/70" />
         </div>
 
         <div className="relative z-10 px-8 md:px-14 py-14 md:py-18">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
             <div className="text-white">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-4 h-[2px] bg-[#0057FF]" />
-                <span className="text-xs font-semibold tracking-[0.15em] text-blue-400 uppercase">Contact Us</span>
-              </div>
+              <span className="section-title-chip mb-4">Contact Us</span>
               <h3 className="text-3xl md:text-4xl font-semibold text-white mb-5 tracking-tight">상담 요청</h3>
-              <div className="space-y-1.5 text-base text-white/70 leading-relaxed max-w-lg">
+              <div className="space-y-1.5 text-base text-slate-200/90 leading-relaxed max-w-lg">
                 <p>에코트로닉스(주)의 제품, 기술, 기타 궁금한 사항에 대한 문의 접수</p>
                 <p>고객님의 관심 분야에 대해 최선을 다해 답변해 드리겠습니다</p>
               </div>
@@ -35,7 +32,7 @@ export function ContactUsSection() {
 
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-2.5 bg-[#0057FF] text-white text-sm font-semibold px-6 py-3 rounded-lg hover:bg-[#0046CC] transition-colors shrink-0 shadow-lg shadow-blue-900/30 cursor-pointer"
+              className="flex items-center gap-2.5 bg-[#4f7cff] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#345af0] transition-colors shrink-0 shadow-lg shadow-blue-900/30 cursor-pointer"
             >
               문의하기
               <ArrowUpRight className="w-4 h-4" />
