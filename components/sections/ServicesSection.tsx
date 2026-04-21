@@ -25,8 +25,9 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="business" className="w-full bg-[#F0F4F8] py-20 md:py-28">
+    <section id="business" className="w-full py-20 md:py-28">
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
+        <div className="section-shell p-6 md:p-10 lg:p-12">
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
           <div>
@@ -41,10 +42,10 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {services.map((service) => (
             <Link key={service.href} href={service.href}
-              className="group relative aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] rounded-xl overflow-hidden block">
+              className="group relative aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] rounded-2xl overflow-hidden block border border-slate-200/70">
               <img src={service.image} alt={service.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
@@ -55,7 +56,7 @@ export function ServicesSection() {
                     <h3 className="text-lg font-semibold text-white mb-1.5 leading-snug">{service.title}</h3>
                     <p className="text-sm text-white/70 leading-relaxed">{service.desc}</p>
                   </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-white/10 border border-white/25 flex items-center justify-center group-hover:bg-[#0057FF] group-hover:border-[#0057FF] transition-colors">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-white/10 border border-white/25 flex items-center justify-center group-hover:bg-[#0057FF] group-hover:border-[#0057FF] transition-colors">
                     <ArrowUpRight className="w-5 h-5 text-white" />
                   </div>
                 </div>
@@ -64,7 +65,7 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <div className="bg-[#0A1628] rounded-xl px-8 md:px-14 py-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+        <div className="bg-[#0A1628] rounded-2xl px-8 md:px-14 py-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden border border-[#12203A]">
           <div className="absolute inset-0 opacity-[0.04]" style={{
             backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
             backgroundSize: '32px 32px'
@@ -80,6 +81,7 @@ export function ServicesSection() {
             더 알아보기
             <ArrowUpRight className="w-4 h-4" />
           </Link>
+        </div>
         </div>
       </div>
     </section>

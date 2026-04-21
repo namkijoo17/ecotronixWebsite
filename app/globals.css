@@ -40,6 +40,8 @@
   --brand-blue: #0057FF;
   --brand-blue-dark: #0046CC;
   --brand-dark: #0A1628;
+  --brand-surface: #f6f8fc;
+  --brand-border: #e5ebf5;
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -100,6 +102,10 @@
     font-feature-settings: "kern" 1, "liga" 1;
     line-height: 1.7;
     color: #1a1a2e;
+    background-image:
+      radial-gradient(1200px 700px at 8% -10%, rgba(0, 87, 255, 0.07), transparent 60%),
+      radial-gradient(1100px 650px at 100% 0%, rgba(10, 22, 40, 0.06), transparent 55%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -112,6 +118,17 @@
   p {
     word-break: keep-all;
     line-height: 1.75;
+  }
+
+  ::selection {
+    background: rgba(0, 87, 255, 0.18);
+    color: #0a1628;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply rounded-3xl border border-[var(--brand-border)] bg-white/80 shadow-[0_20px_60px_-35px_rgba(15,23,42,0.35)] backdrop-blur-sm;
   }
 }
 

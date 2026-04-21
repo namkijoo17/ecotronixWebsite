@@ -7,20 +7,21 @@ import { ContactUsSection } from "./ContactUsSection";
 
 export function CustomerSupportSection() {
   return (
-    <section id="customer_support" className="w-full bg-[#F0F4F8] py-20 md:py-28">
+    <section id="customer_support" className="w-full py-20 md:py-28">
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-5">
-            <span className="w-5 h-[2px] bg-[#0057FF]" />
-            <span className="text-xs font-semibold tracking-[0.12em] text-[#0057FF] uppercase">Customer Support</span>
+        <div className="section-shell p-6 md:p-10 lg:p-12">
+          <div className="mb-16">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-5 h-[2px] bg-[#0057FF]" />
+              <span className="text-xs font-semibold tracking-[0.12em] text-[#0057FF] uppercase">Customer Support</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight">고객지원</h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight">고객지원</h2>
-        </div>
-
-        <div className="space-y-20">
-          <NewsAnnouncement />
-          <ResourceDownloadSection />
-          <ContactUsSection />
+          <div className="space-y-20">
+            <NewsAnnouncement />
+            <ResourceDownloadSection />
+            <ContactUsSection />
+          </div>
         </div>
       </div>
     </section>

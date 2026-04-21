@@ -6,9 +6,9 @@ import { Link } from '@/routing';
 export function IntroToBusinessSection() {
     return (
         <section id="about" className="w-full max-w-[1920px] mx-auto px-4 md:px-8 py-3">
-            <div className="relative w-full min-h-[560px] md:min-h-[640px] rounded-2xl overflow-hidden">
+            <div className="section-shell relative w-full min-h-[560px] md:min-h-[640px] overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/60 to-[#020617]/20 z-10" />
                     <Image src="/images/business-bg.avif" alt="Business Meeting" className="w-full h-full object-cover" fill priority />
                 </div>
 
@@ -19,7 +19,7 @@ export function IntroToBusinessSection() {
                             <span className="text-xs font-semibold tracking-[0.12em] text-white/70 uppercase">About ECOTRONIX</span>
                         </div>
 
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-7 tracking-tight leading-tight">
+                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-7 tracking-tight leading-tight drop-shadow-[0_8px_24px_rgba(2,6,23,0.4)]">
                             Introduce<br />of Business
                         </h2>
 
@@ -30,7 +30,7 @@ export function IntroToBusinessSection() {
                         </p>
 
                         <Link href="/about">
-                            <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                            <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer">
                                 회사 소개
                                 <ArrowUpRight className="w-4 h-4" />
                             </button>

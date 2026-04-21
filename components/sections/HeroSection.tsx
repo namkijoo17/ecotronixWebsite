@@ -47,12 +47,12 @@ export function HeroSection() {
 
   return (
     <section className="w-full max-w-[1920px] mx-auto px-4 md:px-8 pb-10 pt-8 md:pt-6">
-      <div className="relative w-full min-h-[580px] md:min-h-[700px] rounded-2xl overflow-hidden">
+      <div className="section-shell relative w-full min-h-[580px] md:min-h-[700px] overflow-hidden">
 
         <AnimatePresence initial={false}>
           <motion.div key={current} initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease: "easeInOut" }} className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/55 to-[#020617]/20 z-10" />
             <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
           </motion.div>
         </AnimatePresence>
@@ -63,7 +63,7 @@ export function HeroSection() {
           <div className="flex items-center justify-between">
             <AnimatePresence mode="wait">
               <motion.span key={`tag-${current}`} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-semibold tracking-[0.1em] uppercase px-4 py-2 rounded-full">
+                className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-md border border-white/30 text-white text-xs font-semibold tracking-[0.1em] uppercase px-4 py-2 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4D9FFF]" />
                 {slide.tag}
               </motion.span>
@@ -78,14 +78,14 @@ export function HeroSection() {
             <div className="max-w-2xl">
               <AnimatePresence mode="wait">
                 <motion.div key={`content-${current}`} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.5, delay: 0.1 }}>
-                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.05]">
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.05] drop-shadow-[0_8px_24px_rgba(2,6,23,0.4)]">
                     {slide.title}
                   </h1>
                   <p className="text-base md:text-lg text-white/85 font-normal leading-relaxed max-w-lg mb-9">
                     {slide.description}
                   </p>
                   <Link href={slide.href}>
-                    <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                    <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer">
                       자세히 보기
                       <ArrowUpRight className="w-4 h-4" />
                     </button>
@@ -97,7 +97,7 @@ export function HeroSection() {
             <div className="hidden lg:block flex-shrink-0">
               <AnimatePresence mode="wait">
                 <motion.div key={`stat-${current}`} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.4, delay: 0.2 }}
-                  className="bg-white/12 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-white min-w-[200px]">
+                  className="bg-white/12 backdrop-blur-md border border-white/25 rounded-2xl p-8 text-white min-w-[200px] shadow-[0_20px_50px_-35px_rgba(0,0,0,0.8)]">
                   <div className="text-5xl font-semibold mb-2 tabular-nums">{slide.stat.value}</div>
                   <div className="text-sm text-white/70 font-medium tracking-wide">{slide.stat.label}</div>
                 </motion.div>

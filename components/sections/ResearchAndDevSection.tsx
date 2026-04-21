@@ -77,8 +77,9 @@ export function ResearchAndDevSection() {
   }, []);
 
   return (
-    <section className="w-full bg-white py-20 md:py-28" id="rnd">
+    <section className="w-full py-20 md:py-28" id="rnd">
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
+        <div className="section-shell p-6 md:p-10 lg:p-12">
 
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
@@ -98,7 +99,7 @@ export function ResearchAndDevSection() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-0 lg:gap-16 items-start">
 
           {/* Left: Vertical Accordion Tabs */}
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-gray-100 rounded-2xl border border-slate-200/70 bg-white/70 px-4 md:px-6">
             {rdTabs.map((tab) => {
               const isActive = activeTab.id === tab.id;
               return (
@@ -193,7 +194,7 @@ export function ResearchAndDevSection() {
 
           {/* Right: Sticky Image */}
           <div className="hidden lg:block sticky top-24 self-start">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-50">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-50 border border-slate-200/70">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeTab.id}
@@ -232,6 +233,7 @@ export function ResearchAndDevSection() {
 
         </div>
       </div>
+    </div>
     </section>
   );
 }

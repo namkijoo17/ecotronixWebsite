@@ -1,79 +1,60 @@
 "use client";
 
 import React, { useState } from "react";
-import { Link } from '@/routing';
-import { ArrowUpRight, X, Mail, Phone, MapPin } from "lucide-react";
+import { X, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-
-const footerLinks = [
-    { label: "회사소개", href: "/about" },
-    { label: "사업분야", href: "/#business" },
-    { label: "연구개발", href: "/#rnd" },
-    { label: "고객지원", href: "/#customer_support" },
-];
 
 export function Footer() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <>
-            <footer className="w-full bg-[#0A0F1E] text-gray-400">
+            <footer className="w-full bg-[#070D1A] text-gray-400">
                 {/* Top */}
-                <div className="w-full max-w-[1920px] mx-auto px-6 md:px-16 pt-14 pb-10 border-b border-white/5">
-                    <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
+                <div className="w-full max-w-[1920px] mx-auto px-6 md:px-10 lg:px-14 pt-10 pb-8 border-b border-white/10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[220px_1.5fr_1.5fr_220px] gap-8 xl:gap-10 items-start">
+                        <div className="pt-1">
+                            <Image src="/images/eco_logo.svg" alt="ECOTRONIX" width={168} height={40} className="h-8 w-auto brightness-[10] opacity-90" />
+                        </div>
 
-                        {/* Brand */}
-                        <div className="lg:w-72 flex-shrink-0">
-                            <Image src="/images/eco_logo.svg" alt="ECOTRONIX" width={140} height={36} className="h-7 w-auto mb-5 brightness-[10] opacity-90" />
-                            <p className="text-sm leading-relaxed text-gray-500 mb-6">
-                                30년 이상 축적된 전자·제조 기술력을 기반으로 고객의 가치를 제공하는 종합 기술 기업입니다.
-                            </p>
+                        <div>
+                            <p className="text-sm font-semibold text-white mb-3">Company Info.</p>
+                            <div className="space-y-2 text-[12px] leading-relaxed text-gray-400">
+                                <p className="flex items-start gap-2">
+                                    <MapPin className="w-3.5 h-3.5 text-gray-500 mt-0.5 shrink-0" />
+                                    본사 | 경기도 성남시 수정구 달래내로 46, 성남글로벌융합센터 B동 4층, 우편번호 13449
+                                </p>
+                                <p className="flex items-center gap-2">
+                                    <Phone className="w-3.5 h-3.5 text-gray-500 shrink-0" />
+                                    공장 | 충북 진천군 문백면 사양2길 86(사양리 826)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p className="text-sm font-semibold text-white mb-3">Contact.</p>
+                            <div className="space-y-2 text-[12px] leading-relaxed text-gray-400">
+                                <p>TEL. 031-323-9800 | FAX. 031-323-9815 | MAIL. s.sales@ecotro.co.kr</p>
+                                <p>TEL. 043-534-6491 | FAX. 043-534-6492</p>
+                            </div>
+                        </div>
+
+                        <div className="xl:justify-self-end">
+                            <p className="text-sm font-semibold text-white mb-3">Customer Support.</p>
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="flex items-center gap-2 bg-[#0057FF] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#0046CC] transition-colors cursor-pointer"
+                                className="inline-flex items-center justify-center w-full xl:w-auto min-w-[120px] px-5 py-2.5 border border-white/30 text-white text-sm font-medium hover:bg-white hover:text-[#070D1A] transition-colors cursor-pointer"
                             >
-                                문의하기
-                                <ArrowUpRight className="w-3.5 h-3.5" />
+                                Business Talk
                             </button>
-                        </div>
-
-                        {/* Links */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-3">
-                            {footerLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    className="text-sm text-gray-500 hover:text-white transition-colors py-1"
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                        </div>
-
-                        {/* Contact info */}
-                        <div className="flex-shrink-0 space-y-3">
-                            <p className="text-xs font-semibold tracking-[0.12em] text-gray-600 uppercase mb-4">Contact</p>
-                            <div className="flex items-start gap-2.5 text-sm">
-                                <MapPin className="w-3.5 h-3.5 text-gray-600 mt-0.5 flex-shrink-0" />
-                                <span className="text-gray-500 leading-relaxed">경기도 성남시 수정구 달래내로 46<br />성남글로벌융합센터 B동 4층</span>
-                            </div>
-                            <div className="flex items-center gap-2.5 text-sm">
-                                <Phone className="w-3.5 h-3.5 text-gray-600 flex-shrink-0" />
-                                <span className="text-gray-500">031-323-9800</span>
-                            </div>
-                            <div className="flex items-center gap-2.5 text-sm">
-                                <Mail className="w-3.5 h-3.5 text-gray-600 flex-shrink-0" />
-                                <span className="text-gray-500">s.sales@ecotro.co.kr</span>
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom */}
-                <div className="w-full max-w-[1920px] mx-auto px-6 md:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-                    <p className="text-sm text-gray-600">Copyright © 2019 ECOTRONIX Corp. All rights reserved.</p>
-                    <p className="text-sm text-gray-500">충북 진천군 문백면 사양2길 86 · TEL. 043-534-6491</p>
+                <div className="w-full max-w-[1920px] mx-auto px-6 md:px-10 lg:px-14 py-4">
+                    <p className="text-[11px] text-gray-500">Copyright © 2019 ECOTRONIX Corp. ALL RIGHT RESERVED.</p>
                 </div>
             </footer>
 
