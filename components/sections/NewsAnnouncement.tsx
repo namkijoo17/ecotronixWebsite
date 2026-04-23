@@ -35,6 +35,7 @@ const newsItems = [
     url: 'https://www.kyeonggi.com/article/20230419580104'
   }
 ];
+
 export function NewsAnnouncement() {
   const handlePageChange = () => {
     const element = document.getElementById('news-section');
@@ -45,41 +46,37 @@ export function NewsAnnouncement() {
 
   return (
     <div id="news-section" className="w-full scroll-mt-24">
-      <div className="w-full mx-auto">
-        <div className="mx-auto">
-          <Carousel
-            onPageChange={handlePageChange}
-            title={
-              <div className="flex flex-col mb-6">
-                <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold tracking-[0.12em] text-[#2d5bcb] uppercase mb-3">News / Announcements</span>
-                <h3 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight">뉴스/공지</h3>
+      <Carousel
+        onPageChange={handlePageChange}
+        title={
+          <div className="flex flex-col mb-6">
+            <p className="section-label mb-3">News / Announcements</p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-[#0A1628] tracking-tight">뉴스 · 공지</h3>
+          </div>
+        }
+        items={newsItems.map((news, index) => (
+          <a
+            key={index}
+            href={news.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl p-6 border border-[#E5E8EF] hover:border-[#B8965F] hover:shadow-sm transition-all flex flex-col justify-between min-h-[220px] h-full group block"
+          >
+            <h3 className="text-[#0A1628] text-base font-medium leading-relaxed line-clamp-3 mb-6">
+              {news.title}
+            </h3>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="text-xs text-[#8896A8] font-medium">
+                {news.date}
+              </span>
+              <div className="flex items-center gap-1 text-[#B8965F] font-medium text-xs group-hover:gap-2 transition-all">
+                더보기
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
-            }
-            items={newsItems.map((news, index) => (
-              <a
-                key={index}
-                href={news.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all flex flex-col justify-between min-h-[220px] h-full group block"
-              >
-                <h3 className="text-slate-900 text-base font-medium leading-relaxed line-clamp-3 mb-6">
-                  {news.title}
-                </h3>
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="text-sm text-slate-500 font-medium">
-                    {news.date}
-                  </span>
-                  <div className="flex items-center gap-1 text-[#2d5bcb] font-medium text-sm group-hover:gap-2 transition-all">
-                    더보기
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              </a>
-            ))}
-          />
-        </div>
-      </div>
+            </div>
+          </a>
+        ))}
+      />
     </div>
   );
 }

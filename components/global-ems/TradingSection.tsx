@@ -6,7 +6,7 @@ import { Lightbulb, PenTool, Factory, Wrench } from 'lucide-react';
 
 export function TradingSection() {
     return (
-        <section className="w-full py-24 md:py-32 bg-[#f4f4f4] overflow-hidden">
+        <section className="w-full py-24 md:py-32 bg-[#F7F8FB] overflow-hidden">
             <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
                 <div className="mx-auto">
                     <motion.div

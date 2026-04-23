@@ -5,70 +5,55 @@ import { motion } from 'framer-motion';
 
 export function HeroSection() {
     return (
-        <section className="w-full max-w-[1920px] mx-auto px-4 md:px-8 py-8">
-            <div className="section-shell relative w-full h-[550px] sm:h-[450px] md:h-auto md:aspect-21/9 overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/65 to-[#020617]/25 z-10" />
-                    <img
-                        src="/images/global-ems.png"
-                        alt="Global EMS/ODM Facility"
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-
-                {/* Content Overlay */}
-                <div className="absolute inset-0 z-20 flex items-center">
-
-                    {/* Left Side (Text & Line) */}
-                    <div className="w-full lg:w-[65%] pl-8 md:pl-16 lg:pl-24 flex flex-col justify-center relative z-30">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight drop-shadow-[0_10px_30px_rgba(2,6,23,0.45)]"
-                        >
-                            Global EMS/ODM
-                        </motion.h2>
-
-                        {/* Decorative Line */}
-                        <motion.div
-                            initial={{ scaleX: 0, opacity: 0 }}
-                            animate={{ scaleX: 1, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.5 }}
-                            className="hidden lg:flex items-center w-full origin-left my-8 relative"
-                        >
-                            <div className="h-px bg-white grow opacity-80"></div>
-                            <div className="w-3 h-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] absolute right-0 translate-x-1.5"></div>
-                        </motion.div>
-
-                        {/* Mobile spacer since line is hidden */}
-                        <div className="lg:hidden h-6"></div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="pr-8 lg:pr-16"
-                        >
-                            <p className="text-sm md:text-base text-gray-100/90 font-light leading-relaxed max-w-2xl mb-6 break-keep">
-                                오랜 제조경험으로 축적된 노하우를 바탕으로 개발부터 조달, 생산, 품질, 물류까지 아우르는 One-Stop Global EMS/ODM 서비스를 제공합니다. 또한, 글로벌 Network를 구축하고 있어 부품 및 완제품의 조달 및 판매등의 최적의 국제 무역 서비스를 제공합니다.
-                            </p>
-                            <ul className="text-sm md:text-base text-gray-100/90 font-light leading-relaxed space-y-1">
-                                <li>· Global Trading 사업</li>
-                                <li>· Global EMS/ODM 사업</li>
-                            </ul>
-                        </motion.div>
-                    </div>
-                </div>
-
-                {/* Box Outline (positioned relative to the container) */}
+        <section className="w-full bg-white pt-[72px]">
+            <div className="w-full max-w-[1920px] mx-auto px-8 md:px-14 lg:px-20 pt-16 pb-12">
+                <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="section-label mb-5"
+                >
+                    Business Area
+                </motion.p>
+                <motion.h1
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#0A1628] tracking-tight leading-tight mb-6"
+                >
+                    Global<br />EMS/ODM
+                </motion.h1>
+                <div className="w-12 h-[2px] bg-[#B8965F] mb-6" />
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="hidden lg:block absolute top-[16%] bottom-[16%] right-[5%] w-[30%] border border-white/25 bg-white/5 backdrop-blur-[1px] rounded-2xl pointer-events-none z-20"
-                ></motion.div>
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                    <p className="text-[#4B5C73] text-base md:text-lg leading-relaxed max-w-2xl mb-5">
+                        오랜 제조경험으로 축적된 노하우를 바탕으로 개발부터 조달, 생산, 품질, 물류까지 아우르는
+                        One-Stop Global EMS/ODM 서비스를 제공합니다. 글로벌 네트워크를 통해 최적의 국제 무역 서비스를 제공합니다.
+                    </p>
+                    <ul className="flex flex-col gap-2">
+                        {["Global Trading 사업", "Global EMS/ODM 사업"].map((item) => (
+                            <li key={item} className="flex items-center gap-2 text-sm text-[#4B5C73]">
+                                <span className="w-1 h-1 rounded-full bg-[#B8965F]" />
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </motion.div>
+            </div>
+
+            <div className="w-full h-[420px] md:h-[520px] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent z-10" />
+                <motion.img
+                    initial={{ scale: 1.04 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    src="/images/global-ems.png"
+                    alt="Global EMS/ODM"
+                    className="w-full h-full object-cover"
+                />
             </div>
         </section>
     );

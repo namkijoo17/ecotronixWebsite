@@ -16,7 +16,7 @@ const navLinks = [
 ];
 
 const aboutSubMenu = [
-    { title: "CEO 인사말", desc: "에코트로닉스는 1991년 10월에 설립", image: "/images/ceomenu.png", href: "/about#ceo" },
+    { title: "CEO 인사말", desc: "에코트로닉스의 비전과 경영 철학", image: "/images/ceomenu.png", href: "/about#ceo" },
     { title: "주요 연혁", desc: "창립 이래 주요 이정표와 성장", image: "https://images.unsplash.com/photo-1473163928189-364b2c4e1135?q=80&w=2070&auto=format&fit=crop", href: "/about#history" },
     { title: "인증 수상", desc: "우리의 인증, 인정, 그리고 성과", image: "https://images.unsplash.com/photo-1559077670-05b01355df09?q=80&w=2070&auto=format&fit=crop", href: "/about#certificates" },
     { title: "조직도", desc: "우리 팀이 어떻게 성과를 낼 수 있는지", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2070&auto=format&fit=crop", href: "/about#org-chart" },
@@ -31,7 +31,7 @@ const rndSubMenu = [
 
 const servicesSubMenu = [
     { title: "Marine Electronics", desc: "해양 선박용 항해 전자장비 개발", image: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=2070&auto=format&fit=crop", href: "/marine-electronics" },
-    { title: "Vision AI 솔루션", desc: "AI 자동화 검사기 & 스마트팩토리 Robot 솔루션", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", href: "/ai-business" },
+    { title: "Vision AI 솔루션", desc: "AI 자동화 검사기 & 스마트팩토리 솔루션", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", href: "/ai-business" },
     { title: "Global EMS/ODM", desc: "Global Trading, EMS 및 ODM 사업", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop", href: "/global-ems" },
 ];
 
@@ -50,27 +50,27 @@ const subMenuMap: Record<string, typeof aboutSubMenu> = {
 
 function DropdownMenu({ items, onLinkClick }: { items: typeof aboutSubMenu; onLinkClick?: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
     return (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 pointer-events-none group-hover/nav-item:opacity-100 group-hover/nav-item:pointer-events-auto transition-all duration-200 w-[440px] z-50">
-            <div className="bg-white border border-gray-100 rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
+        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none group-hover/nav-item:opacity-100 group-hover/nav-item:pointer-events-auto transition-all duration-200 w-[420px] z-50">
+            <div className="bg-white border border-[#E5E8EF] rounded-xl shadow-xl shadow-[#0A1628]/8 overflow-hidden">
                 {items.map((item, idx) => (
                     <Link
                         key={idx}
                         href={item.href}
                         onClick={onLinkClick ? (e) => onLinkClick(e, item.href) : undefined}
-                        className="flex items-center gap-4 px-5 py-4 hover:bg-[#F5F7FF] transition-colors group/item border-b border-gray-50 last:border-0 cursor-pointer"
+                        className="flex items-center gap-4 px-5 py-3.5 hover:bg-[#F7F8FB] transition-colors group/item border-b border-[#F2F4F8] last:border-0 cursor-pointer"
                     >
-                        <div className="flex-shrink-0 w-16 h-12 relative rounded-lg overflow-hidden">
+                        <div className="flex-shrink-0 w-14 h-10 relative rounded-lg overflow-hidden">
                             <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover/item:scale-110" unoptimized />
                         </div>
                         <div className="flex flex-col min-w-0 flex-1">
-                            <span className="text-sm font-semibold text-gray-900 group-hover/item:text-[#0057FF] transition-colors">
+                            <span className="text-sm font-semibold text-[#0A1628] group-hover/item:text-[#1E3A5F] transition-colors">
                                 {item.title}
                             </span>
-                            <span className="text-xs text-gray-500 mt-0.5 leading-snug">
+                            <span className="text-xs text-[#8896A8] mt-0.5 leading-snug">
                                 {item.desc}
                             </span>
                         </div>
-                        <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover/item:text-[#0057FF] flex-shrink-0 transition-colors" />
+                        <ArrowUpRight className="w-3.5 h-3.5 text-[#D1D8E0] group-hover/item:text-[#B8965F] flex-shrink-0 transition-colors" />
                     </Link>
                 ))}
             </div>
@@ -132,19 +132,19 @@ export function Navbar() {
     return (
         <>
             <header className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[72px]",
                 isScrolled
-                    ? "bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)]"
-                    : "bg-white/70 backdrop-blur-md border-b border-white/60"
+                    ? "bg-white border-b border-[#E5E8EF] shadow-sm"
+                    : "bg-white/95 border-b border-[#E5E8EF]"
             )}>
-                <div className="w-full max-w-[1920px] mx-auto px-6 md:px-16 h-18 flex items-center justify-between">
+                <div className="w-full max-w-[1920px] mx-auto px-6 md:px-14 h-full flex items-center justify-between">
 
                     <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex-shrink-0">
-                        <Image src="/images/eco_logo.svg" alt="ECOTRONIX" width={160} height={40} className="h-8 w-auto" />
+                        <Image src="/images/eco_logo.svg" alt="ECOTRONIX" width={160} height={40} className="h-7 w-auto" />
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-1 rounded-full border border-slate-200/80 bg-white/70 px-2 py-1.5">
+                    <nav className="hidden md:flex items-center gap-0">
                         {navLinks.map((link) => {
                             const subItems = subMenuMap[link.name];
                             return (
@@ -152,10 +152,10 @@ export function Navbar() {
                                     <Link
                                         href={link.href}
                                         onClick={(e) => handleScrollToSection(e, link.href)}
-                                        className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors rounded-full hover:bg-slate-100/80"
+                                        className="flex items-center gap-1 px-5 py-2 text-sm font-medium text-[#4B5C73] hover:text-[#0A1628] transition-colors"
                                     >
                                         {link.name}
-                                        {subItems && <ChevronDown className="w-3.5 h-3.5 opacity-50 group-hover/nav-item:opacity-100 transition-opacity" />}
+                                        {subItems && <ChevronDown className="w-3 h-3 opacity-50 group-hover/nav-item:opacity-100 transition-opacity" />}
                                     </Link>
                                     {subItems && <DropdownMenu items={subItems} onLinkClick={handleScrollToSection} />}
                                 </div>
@@ -164,33 +164,33 @@ export function Navbar() {
                     </nav>
 
                     {/* Right */}
-                    <div className="hidden md:flex items-center gap-3">
+                    <div className="hidden md:flex items-center gap-4">
                         <div className="relative group/lang">
-                            <button className="flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-full border border-transparent hover:border-slate-200 hover:bg-white/70 transition-colors cursor-pointer">
+                            <button className="flex items-center gap-1 text-sm font-medium text-[#4B5C73] hover:text-[#0A1628] transition-colors cursor-pointer">
                                 <span>{localeLabels[locale] ?? locale.toUpperCase()}</span>
-                                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+                                <ChevronDown className="w-3 h-3 opacity-60" />
                             </button>
-                            <div className="absolute top-full right-0 pt-2 opacity-0 pointer-events-none group-hover/lang:opacity-100 group-hover/lang:pointer-events-auto transition-all duration-200 w-36 z-50">
-                                <div className="bg-white border border-gray-100 rounded-xl shadow-2xl shadow-black/10 overflow-hidden py-1">
+                            <div className="absolute top-full right-0 pt-3 opacity-0 pointer-events-none group-hover/lang:opacity-100 group-hover/lang:pointer-events-auto transition-all duration-200 w-32 z-50">
+                                <div className="bg-white border border-[#E5E8EF] rounded-xl shadow-xl shadow-[#0A1628]/8 overflow-hidden py-1">
                                     {allLocales.map(({ code, label }) => (
                                         <button key={code} onClick={() => handleLocaleChange(code)}
-                                            className={cn("w-full text-left px-4 py-3 text-sm transition-colors hover:bg-[#F5F7FF] cursor-pointer",
-                                                locale === code ? "text-[#0057FF] font-semibold bg-[#F5F7FF]" : "text-gray-700 font-medium")}>
+                                            className={cn("w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-[#F7F8FB] cursor-pointer",
+                                                locale === code ? "text-[#0A1628] font-semibold" : "text-[#4B5C73] font-medium")}>
                                             {label}
                                         </button>
                                     ))}
                                 </div>
                             </div>
                         </div>
-                        <div className="w-px h-5 bg-slate-200" />
+                        <div className="w-px h-4 bg-[#E5E8EF]" />
                         <button onClick={() => setIsModalOpen(true)}
-                            className="flex items-center gap-2 bg-[#0057FF] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#0046CC] transition-all duration-300 hover:-translate-y-0.5 shadow-sm shadow-blue-500/20 cursor-pointer">
+                            className="flex items-center gap-1.5 bg-[#0A1628] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-[#1E3A5F] transition-colors cursor-pointer">
                             문의하기
                             <ArrowUpRight className="w-4 h-4" />
                         </button>
                     </div>
 
-                    <button className="md:hidden p-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+                    <button className="md:hidden p-2 text-[#0A1628] hover:bg-[#F7F8FB] rounded-lg transition-colors cursor-pointer" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
                         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
@@ -199,7 +199,7 @@ export function Navbar() {
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden border-t border-gray-100 bg-white overflow-hidden">
+                            className="md:hidden border-t border-[#E5E8EF] bg-white overflow-hidden">
                             <div className="px-6 py-4 space-y-1">
                                 {navLinks.map((link) => {
                                     const subItems = subMenuMap[link.name];
@@ -208,11 +208,11 @@ export function Navbar() {
                                         <div key={link.name}>
                                             <div className="flex items-center justify-between">
                                                 <Link href={link.href} onClick={(e) => { setIsOpen(false); handleScrollToSection(e, link.href); }}
-                                                    className="flex-1 px-3 py-3.5 text-sm font-medium text-gray-800 hover:text-[#0057FF] transition-colors">
+                                                    className="flex-1 px-3 py-3 text-sm font-medium text-[#0A1628] hover:text-[#1E3A5F] transition-colors">
                                                     {link.name}
                                                 </Link>
                                                 {subItems && (
-                                                    <button onClick={() => setMobileOpen(isExpanded ? null : link.name)} className="p-2 text-gray-400 cursor-pointer">
+                                                    <button onClick={() => setMobileOpen(isExpanded ? null : link.name)} className="p-2 text-[#8896A8] cursor-pointer">
                                                         <ChevronDown className={cn("w-4 h-4 transition-transform", isExpanded && "rotate-180")} />
                                                     </button>
                                                 )}
@@ -223,11 +223,11 @@ export function Navbar() {
                                                         <div className="pl-4 pb-2 space-y-1">
                                                             {subItems.map((item, idx) => (
                                                                 <Link key={idx} href={item.href} onClick={() => setIsOpen(false)}
-                                                                    className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#F5F7FF] transition-colors">
+                                                                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-[#F7F8FB] transition-colors">
                                                                     <div className="w-9 h-9 rounded-md overflow-hidden flex-shrink-0 relative">
                                                                         <Image src={item.image} alt={item.title} fill className="object-cover" unoptimized />
                                                                     </div>
-                                                                    <span className="text-sm font-medium text-gray-700">{item.title}</span>
+                                                                    <span className="text-sm font-medium text-[#0A1628]">{item.title}</span>
                                                                 </Link>
                                                             ))}
                                                         </div>
@@ -237,18 +237,18 @@ export function Navbar() {
                                         </div>
                                     );
                                 })}
-                                <div className="pt-4 pb-1 flex items-center justify-between border-t border-gray-100 mt-2">
+                                <div className="pt-4 pb-1 flex items-center justify-between border-t border-[#E5E8EF] mt-2">
                                     <div className="flex items-center gap-1">
                                         {allLocales.map(({ code, label }) => (
                                             <button key={code} onClick={() => handleLocaleChange(code)}
                                                 className={cn("px-3 py-2 text-sm rounded-lg transition-colors cursor-pointer",
-                                                    locale === code ? "bg-[#F5F7FF] text-[#0057FF] font-semibold" : "text-gray-600")}>
+                                                    locale === code ? "bg-[#F7F8FB] text-[#0A1628] font-semibold" : "text-[#4B5C73]")}>
                                                 {label}
                                             </button>
                                         ))}
                                     </div>
                                     <button onClick={() => { setIsOpen(false); setIsModalOpen(true); }}
-                                        className="flex items-center gap-1.5 bg-[#0057FF] text-white text-sm font-semibold px-4 py-2.5 rounded-lg cursor-pointer">
+                                        className="flex items-center gap-1.5 bg-[#0A1628] text-white text-sm font-semibold px-4 py-2.5 rounded-lg cursor-pointer">
                                         문의하기 <ArrowUpRight className="w-4 h-4" />
                                     </button>
                                 </div>
@@ -258,22 +258,22 @@ export function Navbar() {
                 </AnimatePresence>
             </header>
 
-            {/* Modal */}
+            {/* Contact Modal */}
             <AnimatePresence>
                 {isModalOpen && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+                        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-[#0A1628]/60 backdrop-blur-sm"
                         onClick={() => setIsModalOpen(false)}>
                         <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 16 }}
                             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                             className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden"
                             onClick={(e) => e.stopPropagation()}>
-                            <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-gray-100">
+                            <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-[#E5E8EF]">
                                 <div>
-                                    <p className="text-xs font-semibold tracking-[0.12em] text-[#0057FF] uppercase mb-1.5">ECOTRONIX</p>
-                                    <h3 className="text-xl font-semibold text-gray-900">문의하기</h3>
+                                    <p className="text-xs font-semibold tracking-[0.14em] text-[#B8965F] uppercase mb-1.5">ECOTRONIX</p>
+                                    <h3 className="text-xl font-semibold text-[#0A1628]">문의하기</h3>
                                 </div>
-                                <button onClick={() => setIsModalOpen(false)} className="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
+                                <button onClick={() => setIsModalOpen(false)} className="p-2 rounded-lg text-[#8896A8] hover:text-[#0A1628] hover:bg-[#F7F8FB] transition-colors cursor-pointer">
                                     <X className="w-5 h-5" />
                                 </button>
                             </div>
@@ -287,20 +287,20 @@ export function Navbar() {
                                             { label: "전화번호", placeholder: "010-0000-0000", type: "tel" },
                                         ].map(({ label, placeholder, type }) => (
                                             <div key={label}>
-                                                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">{label}</label>
-                                                <input type={type} placeholder={placeholder} className="w-full px-0 py-3 border-b-2 border-gray-100 focus:border-[#0057FF] bg-transparent text-gray-900 placeholder-gray-400 outline-none transition-colors text-sm" />
+                                                <label className="block text-xs font-semibold text-[#8896A8] uppercase tracking-wider mb-2">{label}</label>
+                                                <input type={type} placeholder={placeholder} className="w-full px-0 py-3 border-b border-[#E5E8EF] focus:border-[#0A1628] bg-transparent text-[#0A1628] placeholder-[#D1D8E0] outline-none transition-colors text-sm" />
                                             </div>
                                         ))}
                                     </div>
                                     <div>
-                                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">문의 내용</label>
-                                        <textarea rows={4} placeholder="문의하실 내용을 입력해 주세요" className="w-full px-0 py-3 border-b-2 border-gray-100 focus:border-[#0057FF] bg-transparent text-gray-900 placeholder-gray-400 outline-none transition-colors resize-none text-sm" />
+                                        <label className="block text-xs font-semibold text-[#8896A8] uppercase tracking-wider mb-2">문의 내용</label>
+                                        <textarea rows={4} placeholder="문의하실 내용을 입력해 주세요" className="w-full px-0 py-3 border-b border-[#E5E8EF] focus:border-[#0A1628] bg-transparent text-[#0A1628] placeholder-[#D1D8E0] outline-none transition-colors resize-none text-sm" />
                                     </div>
                                 </form>
                             </div>
                             <div className="px-8 pb-8 pt-4 flex justify-end gap-3">
-                                <button onClick={() => setIsModalOpen(false)} className="px-5 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">취소</button>
-                                <button className="px-6 py-2.5 rounded-lg text-sm font-semibold bg-[#0057FF] text-white hover:bg-[#0046CC] transition-colors cursor-pointer">제출하기</button>
+                                <button onClick={() => setIsModalOpen(false)} className="px-5 py-2.5 rounded-lg text-sm font-medium text-[#4B5C73] hover:bg-[#F7F8FB] transition-colors cursor-pointer">취소</button>
+                                <button className="px-6 py-2.5 rounded-lg text-sm font-semibold bg-[#0A1628] text-white hover:bg-[#1E3A5F] transition-colors cursor-pointer">제출하기</button>
                             </div>
                         </motion.div>
                     </motion.div>

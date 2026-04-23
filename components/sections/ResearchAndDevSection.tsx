@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const rdTabs = [
   {
@@ -77,66 +77,44 @@ export function ResearchAndDevSection() {
   }, []);
 
   return (
-    <section className="w-full pt-7 md:pt-10 pb-14 md:pb-20" id="rnd">
-      <div className="w-full max-w-[1920px] mx-auto px-4 md:px-8">
-        <div className="section-shell p-6 md:p-10 lg:p-12">
+    <section className="w-full bg-[#F7F8FB] py-20 md:py-28" id="rnd">
+      <div className="w-full max-w-[1920px] mx-auto px-8 md:px-14 lg:px-20">
 
-        {/* Section Header */}
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-4 h-[2px] bg-[#0057FF]" />
-              <span className="text-xs font-semibold tracking-[0.15em] text-[#0057FF] uppercase">Research &amp; Development</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 tracking-tight">연구개발</h2>
+            <p className="section-label mb-4">Research & Development</p>
+            <h2 className="section-heading">연구개발</h2>
           </div>
-          <p className="text-gray-600 text-base leading-relaxed max-w-xs md:text-right">
-            지속 가능하고 효율적인 내일의 산업을 위해 연구 개발에 매진합니다.
+          <p className="text-[#4B5C73] text-sm leading-relaxed max-w-xs md:text-right">
+            지속 가능하고 효율적인 내일의 산업을 위해 연구 개발에 매진합니다
           </p>
         </div>
 
-        {/* Content: Accordion + Sticky Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-0 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
-          {/* Left: Vertical Accordion Tabs */}
-          <div className="divide-y divide-gray-100 rounded-2xl border border-slate-200/70 bg-white/70 px-4 md:px-6">
-            {rdTabs.map((tab) => {
+          {/* Left: Tabs */}
+          <div className="bg-white border border-[#E5E8EF] rounded-2xl overflow-hidden">
+            {rdTabs.map((tab, idx) => {
               const isActive = activeTab.id === tab.id;
               return (
-                <div key={tab.id}>
+                <div key={tab.id} className={idx < rdTabs.length - 1 ? "border-b border-[#E5E8EF]" : ""}>
                   <button
                     onClick={() => setActiveTab(tab)}
-                    className="w-full flex items-center justify-between py-7 text-left group cursor-pointer"
+                    className="w-full flex items-center gap-6 px-8 py-7 text-left group cursor-pointer hover:bg-[#F7F8FB] transition-colors"
                   >
-                    <div className="flex items-center gap-5">
-                      <span
-                        className="text-xs font-semibold tabular-nums transition-colors duration-300"
-                        style={{ color: isActive ? '#0057FF' : '#CBD5E1' }}
-                      >
-                        {tab.index}
-                      </span>
-                      <div>
-                        <p
-                          className="text-xs font-semibold tracking-[0.12em] uppercase mb-0.5 transition-colors duration-300"
-                          style={{ color: isActive ? '#0057FF' : 'transparent' }}
-                        >
-                          {tab.titleKo}
-                        </p>
-                        <h3
-                          className="text-[18px] md:text-[20px] font-semibold tracking-tight transition-colors duration-300"
-                          style={{ color: isActive ? '#0F172A' : '#64748B' }}
-                        >
-                          {tab.title}
-                        </h3>
-                      </div>
+                    <span className={`text-sm font-semibold tabular-nums w-6 flex-shrink-0 transition-colors ${isActive ? 'text-[#B8965F]' : 'text-[#D1D8E0]'}`}>
+                      {tab.index}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className={`text-lg font-semibold tracking-tight transition-colors ${isActive ? 'text-[#0A1628]' : 'text-[#8896A8]'}`}>
+                        {tab.title}
+                      </h3>
+                      <p className={`text-xs mt-0.5 transition-colors ${isActive ? 'text-[#B8965F]' : 'text-transparent'}`}>
+                        {tab.titleKo}
+                      </p>
                     </div>
-                    <ArrowUpRight
-                      className="w-4 h-4 flex-shrink-0 transition-all duration-300"
-                      style={{
-                        color: isActive ? '#0057FF' : '#CBD5E1',
-                        transform: isActive ? 'rotate(0deg)' : 'rotate(0deg)',
-                      }}
-                    />
+                    <ArrowRight className={`w-4 h-4 flex-shrink-0 transition-all ${isActive ? 'text-[#0A1628] translate-x-1' : 'text-[#D1D8E0]'}`} />
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -148,40 +126,39 @@ export function ResearchAndDevSection() {
                         transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="pl-[52px] pb-8">
-                          {/* Mobile: image here */}
-                          <div className="lg:hidden relative rounded-xl overflow-hidden mb-6 aspect-[4/3]">
+                        <div className="px-8 pb-8 pl-20">
+                          {/* Mobile image */}
+                          <div className="lg:hidden relative rounded-xl overflow-hidden mb-5 aspect-[4/3]">
                             <img src={tab.image} alt={tab.title} className="w-full h-full object-cover" />
                           </div>
 
-                          <p className="text-base text-gray-600 leading-relaxed mb-6 max-w-md">
+                          <p className="text-sm text-[#4B5C73] leading-relaxed mb-5 max-w-sm">
                             {tab.desc}
                           </p>
 
-                          <ul className="space-y-2.5 mb-8">
+                          <ul className="space-y-2.5 mb-7">
                             {tab.items.map((item, i) => (
-                              <li key={i} className="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
-                                <span className="flex-shrink-0 w-[5px] h-[5px] rounded-full bg-[#0057FF] mt-[7px]" />
+                              <li key={i} className="flex items-start gap-3 text-sm text-[#4B5C73]">
+                                <span className="flex-shrink-0 w-1 h-1 rounded-full bg-[#B8965F] mt-2" />
                                 {item}
                               </li>
                             ))}
                           </ul>
 
-                          <div className="flex items-center gap-6 pt-6 border-t border-gray-100">
-                            <div>
-                              <p className="text-lg font-semibold text-gray-900 tabular-nums">30+</p>
-                              <p className="text-xs text-gray-500 mt-0.5 tracking-wide">Years R&amp;D</p>
-                            </div>
-                            <div className="w-px h-7 bg-gray-100" />
-                            <div>
-                              <p className="text-lg font-semibold text-gray-900 tabular-nums">100+</p>
-                              <p className="text-xs text-gray-500 mt-0.5 tracking-wide">Products</p>
-                            </div>
-                            <div className="w-px h-7 bg-gray-100" />
-                            <div>
-                              <p className="text-lg font-semibold text-gray-900 tabular-nums">15+</p>
-                              <p className="text-xs text-gray-500 mt-0.5 tracking-wide">Patents</p>
-                            </div>
+                          <div className="flex items-center gap-6 pt-5 border-t border-[#E5E8EF]">
+                            {[
+                              { value: "30+", label: "Years R&D" },
+                              { value: "100+", label: "Products" },
+                              { value: "15+", label: "Patents" },
+                            ].map((stat, i) => (
+                              <React.Fragment key={stat.label}>
+                                {i > 0 && <div className="w-px h-6 bg-[#E5E8EF]" />}
+                                <div>
+                                  <p className="text-base font-semibold text-[#0A1628] tabular-nums">{stat.value}</p>
+                                  <p className="text-xs text-[#8896A8] mt-0.5">{stat.label}</p>
+                                </div>
+                              </React.Fragment>
+                            ))}
                           </div>
                         </div>
                       </motion.div>
@@ -192,9 +169,9 @@ export function ResearchAndDevSection() {
             })}
           </div>
 
-          {/* Right: Sticky Image */}
+          {/* Right: Image */}
           <div className="hidden lg:block sticky top-24 self-start">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-50 border border-slate-200/70">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#F7F8FB] border border-[#E5E8EF]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeTab.id}
@@ -208,8 +185,8 @@ export function ResearchAndDevSection() {
                 />
               </AnimatePresence>
 
-              {/* Bottom label */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+              {/* Label */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0A1628]/80 to-transparent">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab.id}
@@ -218,22 +195,20 @@ export function ResearchAndDevSection() {
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
-                    <p className="text-xs font-semibold tracking-[0.15em] text-white/60 uppercase mb-1">{activeTab.titleKo}</p>
-                    <p className="text-lg font-semibold text-white">{activeTab.title}</p>
+                    <p className="text-xs font-semibold tracking-[0.14em] text-[#B8965F] uppercase mb-1">{activeTab.titleKo}</p>
+                    <p className="text-base font-semibold text-white">{activeTab.title}</p>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              {/* Index badge */}
-              <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                <span className="text-xs font-semibold text-white tabular-nums">{activeTab.index}</span>
+              <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                <span className="text-xs font-semibold text-white">{activeTab.index}</span>
               </div>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
     </section>
   );
 }

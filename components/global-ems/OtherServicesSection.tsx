@@ -29,7 +29,7 @@ export function OtherServicesSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                         {/* Card 1: Marine Electronics */}
-                        <Link href="/marine-electronics" className="group cursor-pointer rounded-xl overflow-hidden shadow-sm border border-gray-200 flex flex-col bg-[#f4f4f4]">
+                        <Link href="/marine-electronics" className="group cursor-pointer rounded-xl overflow-hidden shadow-sm border border-[#E5E8EF] flex flex-col bg-white">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export function OtherServicesSection() {
                         </Link>
 
                         {/* Card 2: AI Business */}
-                        <Link href="/ai-business" className="group cursor-pointer rounded-xl overflow-hidden shadow-sm border border-gray-200 flex flex-col bg-[#f4f4f4]">
+                        <Link href="/ai-business" className="group cursor-pointer rounded-xl overflow-hidden shadow-sm border border-[#E5E8EF] flex flex-col bg-white">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}

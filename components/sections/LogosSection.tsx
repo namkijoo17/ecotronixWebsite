@@ -2,27 +2,18 @@ import React from 'react';
 
 export function LogosSection() {
   return (
-    <section className="w-full max-w-[1920px] mx-auto pb-12 pt-4 overflow-hidden">
-      <div className="flex w-max animate-marquee hover:[animation-play-state:paused] opacity-40 grayscale hover:grayscale-0 transition-all duration-15000">
-        {/* First set of logos */}
-        <div className="flex items-center gap-16 px-8">
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
+    <section className="w-full bg-[#F7F8FB] border-y border-[#E5E8EF] py-10 overflow-hidden">
+      <p className="text-center text-xs font-semibold tracking-[0.16em] uppercase text-[#8896A8] mb-8">Partners & Clients</p>
+      <div className="flex w-max animate-marquee hover:[animation-play-state:paused] opacity-50 hover:opacity-70 transition-opacity duration-500">
+        <div className="flex items-center gap-20 px-10">
+          {['SAMSUNG', 'HYUNDAI', 'LG CNS', 'DAEWOO', 'HANWHA', 'POSCO', 'KT'].map((name) => (
+            <span key={name} className="text-sm font-bold tracking-[0.12em] text-[#4B5C73]">{name}</span>
+          ))}
         </div>
-        {/* Second set of logos for seamless loop */}
-        <div className="flex items-center gap-16 px-8">
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
-          <div className="text-2xl font-bold tracking-tighter">LOGOIPSUM</div>
+        <div className="flex items-center gap-20 px-10">
+          {['SAMSUNG', 'HYUNDAI', 'LG CNS', 'DAEWOO', 'HANWHA', 'POSCO', 'KT'].map((name) => (
+            <span key={`${name}-2`} className="text-sm font-bold tracking-[0.12em] text-[#4B5C73]">{name}</span>
+          ))}
         </div>
       </div>
     </section>

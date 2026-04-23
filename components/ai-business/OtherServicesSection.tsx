@@ -3,80 +3,58 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/routing';
+import { ArrowUpRight } from 'lucide-react';
+
+const services = [
+    {
+        href: "/marine-electronics",
+        title: "Marine Electronics",
+        desc: "해양 선박용 항해 전자장비 개발 및 공급",
+        image: "/images/marine-thumb.png",
+    },
+    {
+        href: "/global-ems",
+        title: "Global EMS/ODM",
+        desc: "Global Trading, EMS 및 ODM 사업",
+        image: "/images/global-ems.png",
+    },
+];
 
 export function OtherServicesSection() {
     return (
-        <section id="services" className="py-20 md:py-32 bg-[#f4f4f4]">
-            <div className="mx-auto px-6 md:px-12 lg:px-24">
+        <section id="services" className="w-full bg-[#F7F8FB] py-20 md:py-28">
+            <div className="w-full max-w-[1920px] mx-auto px-8 md:px-14 lg:px-20">
 
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-12 md:mb-16"
-                >
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-4 h-1 bg-[#a3d133]"></div>
-                        <span className="text-sm font-bold tracking-widest text-gray-800 uppercase">OTHER SERVICES</span>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-medium text-gray-900">추가 서비스</h2>
-                </motion.div>
+                <p className="section-label mb-5">Other Services</p>
+                <h2 className="text-4xl md:text-5xl font-semibold text-[#0A1628] tracking-tight mb-12">추가 서비스</h2>
 
-                {/* Service Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-
-                    {/* Card 1: Marine Electronics */}
-                    <Link href="/marine-electronics" className="group cursor-pointer bg-white rounded-t-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="flex flex-col h-full"
-                        >
-                            <div className="relative overflow-hidden aspect-16/10">
-                                <img
-                                    src="/images/marine-thumb.png"
-                                    alt="Marine Electronics"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                            </div>
-                            <div className="p-8 md:p-10 grow relative">
-                                <h3 className="text-2xl font-medium text-gray-900">Marine Electronics</h3>
-                                {/* Blue bottom line indicator */}
-                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-[#2563eb]"></div>
-                            </div>
-                        </motion.div>
-                    </Link>
-
-                    {/* Card 2: Global EMS/ODM */}
-                    <Link href="/global-ems" className="group cursor-pointer bg-white rounded-t-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="flex flex-col h-full"
-                        >
-                            <div className="relative overflow-hidden aspect-16/10">
-                                <img
-                                    src="/images/global-ems.png"
-                                    alt="Global EMS/ODM"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                            </div>
-                            <div className="p-8 md:p-10 grow relative">
-                                <h3 className="text-2xl font-medium text-gray-900">Global EMS/ODM</h3>
-                                {/* Red bottom line indicator */}
-                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-[#dc2626]"></div>
-                            </div>
-                        </motion.div>
-                    </Link>
-
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {services.map((svc, idx) => (
+                        <Link key={idx} href={svc.href} className="block">
+                            <motion.div
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                                className="premium-card overflow-hidden group cursor-pointer"
+                            >
+                                <div className="aspect-[16/9] overflow-hidden relative">
+                                    <img src={svc.image} alt={svc.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-[#0A1628]/10 group-hover:bg-[#0A1628]/0 transition-colors" />
+                                </div>
+                                <div className="p-6 flex items-center justify-between">
+                                    <div>
+                                        <h3 className="text-base font-semibold text-[#0A1628]">{svc.title}</h3>
+                                        <p className="text-xs text-[#8896A8] mt-1">{svc.desc}</p>
+                                    </div>
+                                    <div className="w-9 h-9 flex items-center justify-center border border-[#E5E8EF] rounded-lg group-hover:bg-[#0A1628] group-hover:border-[#0A1628] transition-all">
+                                        <ArrowUpRight className="w-4 h-4 text-[#8896A8] group-hover:text-white transition-colors" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </Link>
+                    ))}
                 </div>
-
             </div>
         </section>
     );
