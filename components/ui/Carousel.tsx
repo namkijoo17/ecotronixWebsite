@@ -87,11 +87,11 @@ export const Carousel: React.FC<CarouselProps> = ({
                 <div>
                     {subtitle && (
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="w-3 h-1 bg-[#0066ff]"></div>
-                            <span className="text-sm font-bold tracking-widest text-gray-900 uppercase">{subtitle}</span>
+                            <div className="w-3 h-1 bg-[#B8965F]"></div>
+                            <span className="text-sm font-bold tracking-widest text-[#0A1628] uppercase">{subtitle}</span>
                         </div>
                     )}
-                    <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tight">{title}</h2>
+                    <h2 className="text-4xl md:text-5xl font-medium text-[#0A1628] tracking-tight">{title}</h2>
                 </div>
 
                 {/* Navigation Buttons */}
@@ -99,22 +99,22 @@ export const Carousel: React.FC<CarouselProps> = ({
                     <button
                         onClick={() => scroll('left')}
                         disabled={currentIndex === 0}
-                        className={`w-14 h-14 rounded-full shadow-sm flex items-center justify-center transition-colors ${currentIndex === 0
-                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                            : 'bg-white text-gray-600 hover:bg-gray-50'
+                        className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all ${currentIndex === 0
+                            ? 'border-[#E5E8EF] text-[#D1D8E0] cursor-not-allowed'
+                            : 'border-[#E5E8EF] text-[#4B5C73] hover:border-[#0A1628] hover:text-[#0A1628] cursor-pointer'
                             }`}
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button
                         onClick={() => scroll('right')}
                         disabled={currentIndex >= maxIndex}
-                        className={`w-14 h-14 rounded-full shadow-md flex items-center justify-center transition-colors ${currentIndex >= maxIndex
-                            ? 'bg-blue-300 text-white cursor-not-allowed'
-                            : 'bg-[#0066ff] text-white hover:bg-blue-700'
+                        className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all ${currentIndex >= maxIndex
+                            ? 'border-[#E5E8EF] text-[#D1D8E0] cursor-not-allowed'
+                            : 'border-[#0A1628] bg-[#0A1628] text-white hover:bg-[#1E3A5F] hover:border-[#1E3A5F] cursor-pointer'
                             }`}
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
             </div>
@@ -140,7 +140,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                         <button
                             key={idx}
                             onClick={() => scrollTo(idx)}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex === idx ? 'w-8 bg-[#0066ff]' : 'w-1.5 bg-gray-400 hover:bg-gray-500'
+                            className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex === idx ? 'w-8 bg-[#0A1628]' : 'w-1.5 bg-[#D1D8E0] hover:bg-[#8896A8]'
                                 }`}
                             aria-label={`Go to slide ${idx + 1}`}
                         />

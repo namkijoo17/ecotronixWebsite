@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/routing';
 
@@ -10,31 +10,40 @@ const slides = [
     id: 1,
     index: "01",
     label: "Marine Electronics",
-    title: "Marine\nElectronics",
+    title: "Marine",
+    subtitle: "Electronics",
     description: "30년 이상의 기술력으로 해양 선박용 항해 전자장비를 개발하고 글로벌 시장에 공급합니다.",
     image: "./images/ship.avif",
-    stat: { value: "30+", label: "Years of Excellence" },
+    stat: "30+",
+    statLabel: "Years",
     href: "/marine-electronics",
+    tag: "해양전자장비",
   },
   {
     id: 2,
     index: "02",
     label: "Vision AI",
-    title: "AI\nSolutions",
+    title: "AI",
+    subtitle: "Solutions",
     description: "AI 기반 자동화 검사기와 스마트팩토리 솔루션으로 제조 현장의 미래를 선도합니다.",
     image: "./images/Ai.avif",
-    stat: { value: "100+", label: "Industries Served" },
+    stat: "100+",
+    statLabel: "Industries",
     href: "/ai-business",
+    tag: "스마트팩토리",
   },
   {
     id: 3,
     index: "03",
     label: "Global EMS/ODM",
-    title: "Smart\nFactory",
+    title: "Smart",
+    subtitle: "Factory",
     description: "글로벌 EMS·ODM 사업으로 고객의 제품이 세계 시장에서 경쟁력을 갖출 수 있도록 지원합니다.",
     image: "./images/factory.avif",
-    stat: { value: "99%", label: "Client Satisfaction" },
+    stat: "99%",
+    statLabel: "Satisfaction",
     href: "/global-ems",
+    tag: "글로벌 EMS",
   },
 ];
 
@@ -59,127 +68,155 @@ export function HeroSection() {
   const slide = slides[current];
 
   return (
-    <section className="w-full min-h-[100svh] flex flex-col lg:flex-row bg-white pt-[72px]">
-      {/* Left: Text Panel */}
-      <div className="w-full lg:w-[45%] flex flex-col justify-between px-8 md:px-14 lg:px-16 py-12 lg:py-16 order-2 lg:order-1">
-        <div className="flex-1 flex flex-col justify-center">
+    /* -mt-16 cancels the layout's pt-16, making image flush with navbar */
+    <section className="relative -mt-16 w-full h-[100svh] overflow-hidden bg-[#0A1628]">
+
+      {/* Background Image */}
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={`bg-${current}`}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.4, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute inset-0 z-0"
+        >
+          <img src={slide.image} alt="" className="w-full h-full object-cover" />
+          {/* Multi-layer gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1628]/95 via-[#0A1628]/60 to-[#0A1628]/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 via-transparent to-[#0A1628]/20" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col px-8 md:px-14 lg:px-20 pt-[88px] pb-10">
+
+        {/* Top row: label + index */}
+        <div className="flex items-center justify-between mb-auto">
           <AnimatePresence mode="wait">
             <motion.div
-              key={`text-${current}`}
-              initial={{ opacity: 0, y: 20 }}
+              key={`label-${current}`}
+              initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.4 }}
+              className="flex items-center gap-3"
             >
-              <p className="section-label mb-6">{slide.label}</p>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-semibold text-[#0A1628] tracking-tight leading-[1.0] mb-8 whitespace-pre-line">
+              <span className="w-6 h-[1px] bg-[#B8965F]" />
+              <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#B8965F]">
+                {slide.label}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="hidden md:flex items-center gap-2 text-white/30 text-xs tracking-[0.2em]">
+            <span className="text-white/70">{slide.index}</span>
+            <span>/</span>
+            <span>{String(slides.length).padStart(2, "0")}</span>
+          </div>
+        </div>
+
+        {/* Main content: centered vertically */}
+        <div className="flex-1 flex flex-col justify-center max-w-4xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`content-${current}`}
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            >
+              {/* Display title */}
+              <h1 className="text-[clamp(64px,10vw,140px)] font-semibold text-white leading-[0.92] tracking-tight mb-6">
                 {slide.title}
+                <span className="block text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.35)]">
+                  {slide.subtitle}
+                </span>
               </h1>
-              <p className="text-[#4B5C73] text-base md:text-lg leading-relaxed mb-10 max-w-md">
-                {slide.description}
-              </p>
-              <div className="flex items-center gap-4">
-                <Link href={slide.href}>
-                  <button className="btn-primary">
-                    자세히 보기
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
-                </Link>
+
+              <div className="flex flex-col md:flex-row md:items-end gap-8">
+                <p className="text-[#94A3B8] text-base md:text-lg leading-relaxed max-w-md">
+                  {slide.description}
+                </p>
+
+                <div className="flex items-center gap-4 md:ml-auto shrink-0">
+                  <div className="text-right hidden md:block">
+                    <p className="text-3xl font-semibold text-white tabular-nums">{slide.stat}</p>
+                    <p className="text-xs text-white/40 tracking-wider">{slide.statLabel}</p>
+                  </div>
+                  <div className="w-px h-10 bg-white/20 hidden md:block" />
+                  <Link href={slide.href}>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group flex items-center gap-2 bg-white text-[#0A1628] text-sm font-bold px-7 py-3.5 rounded-full hover:bg-[#B8965F] hover:text-white transition-all duration-300 cursor-pointer"
+                    >
+                      자세히 보기
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </motion.button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Bottom Controls */}
-        <div className="mt-12">
-          {/* Progress Bars */}
-          <div className="flex items-center gap-3 mb-8">
+        {/* Bottom row */}
+        <div className="flex items-end justify-between gap-6">
+
+          {/* Slide indicators */}
+          <div className="flex items-center gap-4">
             {slides.map((s, idx) => (
               <button
                 key={idx}
                 onClick={() => { setCurrent(idx); setProgress(0); }}
-                className="flex-1 group cursor-pointer"
+                className="group flex flex-col gap-2 cursor-pointer"
               >
-                <div className="h-[2px] bg-[#E5E8EF] rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[#0A1628] transition-none rounded-full"
+                <div className="w-16 h-[1px] bg-white/20 overflow-hidden rounded-full">
+                  <motion.div
+                    className="h-full bg-[#B8965F] rounded-full"
                     style={{
                       width: idx === current ? `${progress}%` : idx < current ? '100%' : '0%',
                     }}
                   />
                 </div>
-                <p className="text-xs text-[#8896A8] mt-2 font-medium group-hover:text-[#0A1628] transition-colors">{s.index}</p>
+                <span className={`text-[10px] tracking-[0.15em] font-medium transition-colors ${idx === current ? 'text-white' : 'text-white/30 group-hover:text-white/60'}`}>
+                  {s.index}
+                </span>
               </button>
             ))}
           </div>
 
-          {/* Stat Card */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`stat-${current}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="flex items-center gap-6 p-5 border border-[#E5E8EF] rounded-xl bg-[#F7F8FB]"
+          {/* Side nav arrow + tag */}
+          <div className="hidden md:flex items-center gap-4">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={`tag-${current}`}
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0 }}
+                className="text-xs font-medium tracking-wider text-white/40 uppercase"
+              >
+                {slide.tag}
+              </motion.span>
+            </AnimatePresence>
+            <button
+              onClick={() => { setCurrent((c) => (c + 1) % slides.length); setProgress(0); }}
+              className="w-10 h-10 flex items-center justify-center border border-white/20 rounded-full text-white/60 hover:border-[#B8965F] hover:text-[#B8965F] transition-all cursor-pointer"
             >
-              <div>
-                <p className="text-3xl font-semibold text-[#0A1628] tracking-tight">{slide.stat.value}</p>
-                <p className="text-xs text-[#8896A8] mt-0.5">{slide.stat.label}</p>
-              </div>
-              <div className="w-px h-10 bg-[#E5E8EF]" />
-              <p className="text-xs text-[#4B5C73] leading-relaxed flex-1">
-                ECOTRONIX — 기술과 신뢰로 글로벌 시장을 선도합니다
-              </p>
-            </motion.div>
-          </AnimatePresence>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Right: Image */}
-      <div className="w-full lg:w-[55%] relative min-h-[50svh] lg:min-h-0 order-1 lg:order-2 overflow-hidden">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={`img-${current}`}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 z-10" />
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Slide number overlay */}
-        <div className="absolute top-8 right-8 z-20">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`num-${current}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="text-white/60 text-xs font-medium tracking-[0.2em]"
-            >
-              {slide.index} / {String(slides.length).padStart(2, "0")}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Arrow nav */}
-        <div className="absolute bottom-8 right-8 z-20">
-          <button
-            onClick={() => { setCurrent((c) => (c + 1) % slides.length); setProgress(0); }}
-            className="w-12 h-12 flex items-center justify-center bg-white/10 border border-white/30 rounded-full text-white hover:bg-white hover:text-[#0A1628] transition-all cursor-pointer backdrop-blur-sm"
-          >
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
+      {/* Right-side vertical text decoration */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden xl:flex flex-col items-center gap-4">
+        <div className="h-16 w-[1px] bg-white/15" />
+        <p className="text-[10px] tracking-[0.3em] text-white/25 uppercase [writing-mode:vertical-lr]">
+          ECOTRONIX
+        </p>
+        <div className="h-16 w-[1px] bg-white/15" />
       </div>
     </section>
   );
